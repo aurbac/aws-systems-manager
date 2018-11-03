@@ -172,7 +172,10 @@ Resources:
           SubnetId: !Ref 'PublicSubnet1'
       Tags:
         - Key: Name
-          Value: SSM-AmazonLinux2
+          Value: !Join
+            - ''
+            - - !Ref 'AWS::StackName'
+              - -AmazonLinux2
       UserData: !Base64 '80'
     Type: AWS::EC2::Instance
   LinuxInstanceProfile:
@@ -281,7 +284,10 @@ Resources:
           SubnetId: !Ref 'PublicSubnet1'
       Tags:
         - Key: Name
-          Value: SSM-Windows2012
+          Value: !Join
+            - ''
+            - - !Ref 'AWS::StackName'
+              - -Windows2012
       UserData: !Base64 '80'
     Type: AWS::EC2::Instance
   Windows2016Instance:
@@ -301,7 +307,10 @@ Resources:
           SubnetId: !Ref 'PublicSubnet1'
       Tags:
         - Key: Name
-          Value: SSM-Windows2016
+          Value: !Join
+            - ''
+            - - !Ref 'AWS::StackName'
+              - -Windows2016
       UserData: !Base64 '80'
     Type: AWS::EC2::Instance
   WindowsInstanceProfile:
