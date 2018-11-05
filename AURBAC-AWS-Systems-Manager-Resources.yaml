@@ -155,7 +155,7 @@ Resources:
         - DeviceName: /dev/xvda
           Ebs:
             DeleteOnTermination: 'true'
-            VolumeSize: 16
+            VolumeSize: 8
             VolumeType: gp2
       IamInstanceProfile: !Ref 'LinuxInstanceProfile'
       ImageId: !FindInMap
@@ -176,7 +176,16 @@ Resources:
             - ''
             - - !Ref 'AWS::StackName'
               - -AmazonLinux2
-      UserData: !Base64 '80'
+      UserData: !Base64
+        Fn::Join:
+          - ''
+          - - "#!/bin/bash -xe\n"
+            - "adduser administrator\n"
+            - "usermod -aG wheel administrator\n"
+            - "echo -e \"linuxpassword\\nlinuxpassword\" | passwd administrator\n"
+            - "sed -i \"s/PasswordAuthentication no/PasswordAuthentication yes/g\"\
+              \ /etc/ssh/sshd_config\n"
+            - "systemctl restart sshd.service\n"
     Type: AWS::EC2::Instance
   LinuxInstanceProfile:
     Properties:
@@ -288,7 +297,6 @@ Resources:
             - ''
             - - !Ref 'AWS::StackName'
               - -Windows2012
-      UserData: !Base64 '80'
     Type: AWS::EC2::Instance
   Windows2016Instance:
     Properties:
@@ -311,7 +319,6 @@ Resources:
             - ''
             - - !Ref 'AWS::StackName'
               - -Windows2016
-      UserData: !Base64 '80'
     Type: AWS::EC2::Instance
   WindowsInstanceProfile:
     Properties:
