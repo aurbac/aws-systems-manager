@@ -34,7 +34,7 @@ d\. Launch the CloudFormation template two times for your selected region, the f
 
 ## Resource Groups
 
-1\. Go to Systems Manager service en click on **Find Resources** under Resource Groups section.
+1\. Go to Systems Manager service and click on **Find Resources** under Resource Groups section.
 
 2\. On the resource apply a filter using the tag key `Environment` and the value `Production` or `Development` and click **View query results**.
 
@@ -42,7 +42,7 @@ d\. Launch the CloudFormation template two times for your selected region, the f
 
 ## Inventory
 
-1\. Go to Systems Manager service en click on **Inventory** under Insights section.
+1\. Go to Systems Manager service and click on **Inventory** under Insights section.
 
 2\. Click on **Setup Inventory**.
 
@@ -54,13 +54,85 @@ d\. Launch the CloudFormation template two times for your selected region, the f
 
 **NOTE:** Aditionally, you can create an inventory that search for **Files** or the **Windows Registry**, [example configuration in the Configuring Collection section in step 6](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html).
 
-## Run Command to Update SSM Agent
+## Change password Windows/Linux
 
-1\. Go to Systems Manager service en click on **Run Command** under Actions section and click on **Run Command** button.
+### Parameter Store
 
-2\. On the Run a command page, click in the search bar and select, **Document name prefix**, then click on **Equal**, then type in `AWS-UpdateSSMAgent` and enter.
+1\. Go to Systems Manager service and click on **Parameter Store** under Shared Resources section and click on **Create parameter** button.
 
-3\. Now select the **AWS-UpdateSSMAgent** document name that will upgrade Systems Management agent on the instances.
+2\. Use the name `AdminPass` and type **String** for the parameter.
+
+3\. In the value field type `MyNewPass1234` and click on **Create parameter**.
+
+### Documents
+
+1\. Go to Systems Manager service and click on **Documents** under Shared Resources section and click on **Create document** button.
+
+2\. Use the name `ChangePassword` for the new document.
+
+3\. On Document type select **Command document** and content **JSON** type.
+
+4\. Copy and replace in the field text with the follwing following structure:
+
+    {
+    "schemaVersion": "2.2",
+    "description": "Change password for a Linux/Windows user.",
+    "parameters": {
+        "User": {
+        "type": "String",
+        "description": "User to change password",
+        "default":"administrator"
+        },
+        "Password": {
+        "type": "String",
+        "description": "New password",
+        "default":"{{ssm:AdminPass}}"
+        }
+    },
+    "mainSteps": [
+        {
+        "action": "aws:runPowerShellScript",
+        "precondition": {
+            "StringEquals": [
+            "platformType",
+            "Windows"
+            ]
+        },
+        "name": "WindowsChangePassword",
+        "inputs": {
+            "runCommand": [
+            "net user {{User}} \"{{Password}}\""
+            ]
+        }
+        },
+        {
+        "action": "aws:runShellScript",
+        "precondition": {
+            "StringEquals": [
+            "platformType",
+            "Linux"
+            ]
+        },
+        "name": "LinuxChangePassword",
+        "inputs": {
+            "runCommand": [
+            "#!/bin/bash",
+            "echo -e \"{{Password}}\\n{{Password}}\" | passwd {{User}}"
+            ]
+        }
+        }
+    ]
+    }
+
+### Run Command
+
+1\. Go to Systems Manager service and click on **Run Command** under Actions section and click on **Run Command** button.
+
+2\. On the Run a command page, click in the search bar and select, **Owner**, then click on **Owned by me**.
+
+3\. Now select the **ChangePassword** document name that we created previously.
+
+4\. For the command paramters we are going to use the default values, where Password is referenced for the Paramater Store created.
 
 4\. On Targets, select **Specifying a tag** and apply a filter using the tag key `Environment` and the value `Development`, click on **Add**.
 
@@ -68,19 +140,11 @@ d\. Launch the CloudFormation template two times for your selected region, the f
 
 6\. Next you will see page documenting your running command then and overall success in green.
 
-#### AWS Config: Configuration change
+**Now you can get into you Windows/Linux instances with the new password.**
 
-1\. Go to **Inventory** under Insights section, scroll down and on Corresponding managed instances and click in the AWS Config button for the `development-resources-AmazonLinux2` instance.
+## Maintenance Windows and Patching
 
-![Inventory instances](https://github.com/aurbac/aws-systems-manager/raw/master/images/inventory-instances-config.png)
-
-2\. In the next page you will see a timeline changes for the instance, the last change will be selected, scroll down and expand the **Changes** section to see the change version for the SSM Agent.
-
-![SSM Agent change](https://github.com/aurbac/aws-systems-manager/raw/master/images/config-change.png)
-
-## Patching
-
-1\. Go to Systems Manager service en click on **Maintenance Windows** under Actions section and click on **Create Maintenance Window** button.
+1\. Go to Systems Manager service and click on **Maintenance Windows** under Actions section and click on **Create Maintenance Window** button.
 
 2\. Use the name `MaitenanceWindows2012Prod`.
 
@@ -101,3 +165,29 @@ d\. Launch the CloudFormation template two times for your selected region, the f
 10\. Now you can come back to **Maintenance Windows** and click on the Windows ID for **MaitenanceWindows2012Prod**.
 
 11\. You can see the details for the maintenance window, the tasks, targets and the history of executions.
+
+## State Manager
+
+1\. Go to Systems Manager service and click on **State Manager** under Actions section and click on **Create association** button.
+
+2\. Use the name `UpdateSSMDevelopment`.
+
+3\. In the Command Document, click in the search bar and select, **Document name prefix**, then click on **Equal**, then type in `AWS-UpdateSSMAgent` and enter.
+
+3\. Now select the **AWS-UpdateSSMAgent** document name that will upgrade Systems Management agent on the instances.
+
+4\. On Targets, select **Specifying a tag** and apply a filter using the tag key `Environment` and the value `Development`.
+
+5\. Specify schedule for **Every Day** at your preference time.
+
+6\. Scroll down and click **Create association**.
+
+#### AWS Config: Configuration change
+
+1\. Go to **Inventory** under Insights section, scroll down and on Corresponding managed instances and click in the AWS Config button for the `development-resources-AmazonLinux2` instance.
+
+![Inventory instances](https://github.com/aurbac/aws-systems-manager/raw/master/images/inventory-instances-config.png)
+
+2\. In the next page you will see a timeline changes for the instance, the last change will be selected, scroll down and expand the **Changes** section to see the change version for the SSM Agent.
+
+![SSM Agent change](https://github.com/aurbac/aws-systems-manager/raw/master/images/config-change.png)
