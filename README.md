@@ -1,6 +1,6 @@
 # Systems Manager
 
-Hello, this is a self-paced workshop designed explore the main features in AWS Systems Manager.
+Hello, this is a self-paced workshop designed to explore the main features inside AWS Systems Manager.
 
 ## Let's begin preparing the environment
 
