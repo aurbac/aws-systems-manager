@@ -1,7 +1,6 @@
-Description: Create a VPC with 2 public subnets and Linux/Windows instances by Uriel
-  Ramirez
+Description: Create a VPC and Linux/Windows EC2 instances - By Uriel Ramirez
 Mappings:
-  AmazonLinuxMap:
+  AmazonLinux2Map:
     ap-northeast-1:
       AMI: ami-00f9d04b3b3092052
     ap-northeast-2:
@@ -32,6 +31,39 @@ Mappings:
       AMI: ami-01beb64058d271bc4
     us-west-2:
       AMI: ami-061e7ebbc234015fe
+  Centos7Map:
+    ap-northeast-1:
+      AMI: ami-8e8847f1
+    ap-northeast-2:
+      AMI: ami-bf9c36d1
+    ap-south-1:
+      AMI: ami-1780a878
+    ap-southeast-1:
+      AMI: ami-8e0205f2
+    ap-southeast-2:
+      AMI: ami-d8c21dba
+    ca-central-1:
+      AMI: ami-e802818c
+    eu-central-1:
+      AMI: ami-dd3c0f36
+    eu-north-1:
+      AMI: ami-b133bccf
+    eu-west-1:
+      AMI: ami-3548444c
+    eu-west-2:
+      AMI: ami-00846a67
+    eu-west-3:
+      AMI: ami-262e9f5b
+    sa-east-1:
+      AMI: ami-cb5803a7
+    us-east-1:
+      AMI: ami-9887c6e7
+    us-east-2:
+      AMI: ami-9c0638f9
+    us-west-1:
+      AMI: ami-4826c22b
+    us-west-2:
+      AMI: ami-3ecc8f46
   Windows2012Map:
     ap-northeast-1:
       AMI: ami-0a45b66bda01c89c8
@@ -131,25 +163,7 @@ Parameters:
       instance
     Type: AWS::EC2::KeyPair::KeyName
 Resources:
-  AttachGateway:
-    Properties:
-      InternetGatewayId: !Ref 'InternetGateway'
-      VpcId: !Ref 'Vpc'
-    Type: AWS::EC2::VPCGatewayAttachment
-  IGRoute:
-    DependsOn: AttachGateway
-    Properties:
-      DestinationCidrBlock: '0.0.0.0/0'
-      GatewayId: !Ref 'InternetGateway'
-      RouteTableId: !Ref 'PublicRouteTable'
-    Type: AWS::EC2::Route
-  InternetGateway:
-    Properties:
-      Tags:
-        - Key: Application
-          Value: !Ref 'AWS::StackId'
-    Type: AWS::EC2::InternetGateway
-  LinuxInstance:
+  AmazonLinux2Instance:
     Properties:
       BlockDeviceMappings:
         - DeviceName: /dev/xvda
@@ -159,7 +173,7 @@ Resources:
             VolumeType: gp2
       IamInstanceProfile: !Ref 'LinuxInstanceProfile'
       ImageId: !FindInMap
-        - AmazonLinuxMap
+        - AmazonLinux2Map
         - !Ref 'AWS::Region'
         - AMI
       InstanceType: t2.micro
@@ -180,13 +194,61 @@ Resources:
         Fn::Join:
           - ''
           - - "#!/bin/bash -xe\n"
-            - "adduser administrator\n"
-            - "usermod -aG wheel administrator\n"
-            - "echo -e \"linuxpassword\\nlinuxpassword\" | passwd administrator\n"
-            - "sed -i \"s/PasswordAuthentication no/PasswordAuthentication yes/g\"\
-              \ /etc/ssh/sshd_config\n"
-            - "systemctl restart sshd.service\n"
     Type: AWS::EC2::Instance
+  AttachGateway:
+    Properties:
+      InternetGatewayId: !Ref 'InternetGateway'
+      VpcId: !Ref 'Vpc'
+    Type: AWS::EC2::VPCGatewayAttachment
+  Centos7Instance:
+    Properties:
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            DeleteOnTermination: 'true'
+            VolumeSize: 8
+            VolumeType: gp2
+      IamInstanceProfile: !Ref 'LinuxInstanceProfile'
+      ImageId: !FindInMap
+        - Centos7Map
+        - !Ref 'AWS::Region'
+        - AMI
+      InstanceType: t2.micro
+      KeyName: !Ref 'KeyName'
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: 'true'
+          DeviceIndex: 0
+          GroupSet:
+            - !Ref 'LinuxSecurityGroup'
+          SubnetId: !Ref 'PublicSubnet1'
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ''
+            - - !Ref 'AWS::StackName'
+              - -Centos7
+      UserData: !Base64
+        Fn::Join:
+          - ''
+          - - "#!/bin/bash -xe\n"
+            - "sudo yum update -y\n"
+            - "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm\n"
+            - "sudo systemctl enable amazon-ssm-agent\n"
+            - "sudo systemctl start amazon-ssm-agent\n"
+    Type: AWS::EC2::Instance
+  IGRoute:
+    DependsOn: AttachGateway
+    Properties:
+      DestinationCidrBlock: '0.0.0.0/0'
+      GatewayId: !Ref 'InternetGateway'
+      RouteTableId: !Ref 'PublicRouteTable'
+    Type: AWS::EC2::Route
+  InternetGateway:
+    Properties:
+      Tags:
+        - Key: Application
+          Value: !Ref 'AWS::StackId'
+    Type: AWS::EC2::InternetGateway
   LinuxInstanceProfile:
     Properties:
       Roles:
@@ -204,6 +266,7 @@ Resources:
                 - ec2.amazonaws.com
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+        - arn:aws:iam::aws:policy/service-role/AmazonSSMMaintenanceWindowRole
     Type: AWS::IAM::Role
   LinuxSecurityGroup:
     Properties:
@@ -337,6 +400,7 @@ Resources:
                 - ec2.amazonaws.com
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+        - arn:aws:iam::aws:policy/service-role/AmazonSSMMaintenanceWindowRole
     Type: AWS::IAM::Role
   WindowsSecurityGroup:
     Properties:

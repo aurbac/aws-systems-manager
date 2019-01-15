@@ -4,33 +4,45 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 
 ## Let's begin preparing the environment
 
-a\. Log into the AWS Management Console and choose the preferred [AWS region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
+1\. Log into the AWS Management Console and choose the preferred [AWS region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
 
-b\. [Firstly, we need to set up AWS Config to record configuration changes of our resources.](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html)
+2\. [We need to set up AWS Config to record configuration changes of our resources.](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html)
 
-c\. [We need to create a Keypair to log in to the ec2 instances.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
+3\. [We need to create a Keypair to log in to the ec2 instances.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
 
-d\. Launch the CloudFormation template two times for your selected region, the first one for the production environment and the second one for the development environment, [download the template to create the resources stacks](https://raw.githubusercontent.com/aurbac/aws-systems-manager/master/AURBAC-AWS-Systems-Manager-Resources.yaml).
+5\. Launch the CloudFormation template two times for your selected region, the first one for the production environment and the second one for the development environment, [download the template to create the resources stacks](https://raw.githubusercontent.com/aurbac/aws-systems-manager/master/AURBAC-AWS-Instances-For-SSM.yaml).
 
-### Creating two CloudFormation stacks
+  a\. Go to CloudFormation service and click on **Create Stack**.
 
-1\. Go to CloudFormation service and click on **Create Stack**.
+  b\. Use the name `production-resources` or `development-resources` to identify the cloudformation stacks.
 
-2\. Use the name `production-resources` or `development-resources` to identify the cloudformation stacks.
+  c\. Select your KeyPair created previously, click **Next**.
 
-3\. Select your KeyPair created previously, click **Next**.
+  d\. For the Options, add the tag key `Environment` and the value `Production` or `Development` depending on the stack to be created, click **Next**.
 
-4\. For the Options, add the tag key `Environment` and the value `Production` or `Development` depending on the stack to be created, click **Next**.
+  e\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
-5\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
+6\. Launch the CloudFormation template to create the S3 bucket and the role for the maintenance window task, [download the template to create the resources stack](https://raw.githubusercontent.com/aurbac/aws-systems-manager/master/AURBAC-AWS-SSM-Requirements.yaml).
+
+  a\. Go to CloudFormation service and click on **Create Stack**.
+
+  b\. Use the name `ssm-requirements` identify the cloudformation stacks.
+
+  c\. Click **Next**.
+
+  d\. For the Options, click **Next**.
+
+  e\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
 ### AWS Services created
 
-* Amazon VPC environment with two public subnets
-* EC2 instance Amazon Linux 2 (t2.micro) with IAM Role
-* EC2 instance Windows 2012 (t2.medium) with IAM Role
-* EC2 instance Windows 2016 (t2.medium) with IAM Role
-* The IAM Role has the policy required for Systems Manager: **AmazonEC2RoleforSSM**
+* Two amazon VPC environments with two public subnets, each on with:
+  * EC2 instance Amazon Linux 2 (t2.micro) with IAM Role.
+  * EC2 instance Windows 2012 (t2.medium) with IAM Role.
+  * EC2 instance Windows 2016 (t2.medium) with IAM Role.
+  * Each instance has an IAM Role with the policy required for Systems Manager: **AmazonEC2RoleforSSM**
+* An S3 bucket for the maintenance window task.
+* An IAM Role for the maintenance window task.
 
 ## Resource Groups
 
