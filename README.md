@@ -148,7 +148,10 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
         "inputs": {
             "runCommand": [
             "#!/bin/bash",
-            "sudo yum update -y"
+            "sudo yum update -y",
+            "sudo yum install httpd -y",
+            "sudo systemctl enable httpd",
+            "sudo systemctl start httpd"
             ]
         }
         }
