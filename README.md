@@ -74,7 +74,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 **NOTE:** Aditionally, you can create an inventory that search for **Files** or the **Windows Registry**, [example configuration in the Configuring Collection section in step 6](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html).
 
 
-## SSM Agent update with State Manager
+## Update the SSM Agent with State Manager
 
 1\. Go to Systems Manager service and click on **State Manager** under Actions section and click on **Create association** button.
 
@@ -102,19 +102,11 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 ## Change password Windows/Linux
 
-### Parameter Store
-
-1\. Go to Systems Manager service and click on **Parameter Store** under Shared Resources section and click on **Create parameter** button.
-
-2\. Use the name `AdminPass` and type **String** for the parameter.
-
-3\. In the value field type `MyNewPass1234` and click on **Create parameter**.
-
 ### Documents
 
 1\. Go to Systems Manager service and click on **Documents** under Shared Resources section and click on **Create document** button.
 
-2\. Use the name `ChangePassword` for the new document.
+2\. Use the name `ActivateWebServer` for the new document.
 
 3\. On Document type select **Command document** and content **JSON** type.
 
@@ -122,19 +114,8 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
     {
     "schemaVersion": "2.2",
-    "description": "Change password for a Linux/Windows user.",
-    "parameters": {
-        "User": {
-        "type": "String",
-        "description": "User to change password",
-        "default":"administrator"
-        },
-        "Password": {
-        "type": "String",
-        "description": "New password",
-        "default":"{{ssm:AdminPass}}"
-        }
-    },
+    "description": "Activate WebServer.",
+    "parameters": {},
     "mainSteps": [
         {
         "action": "aws:runPowerShellScript",
@@ -144,10 +125,14 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
             "Windows"
             ]
         },
-        "name": "WindowsChangePassword",
+        "name": "WindowsWebServer",
         "inputs": {
             "runCommand": [
-            "net user {{User}} \"{{Password}}\""
+                "Set-ExecutionPolicy Unrestricted -Force",
+                "New-Item -ItemType directory -Path 'C:\temp'",
+                "Import-Module ServerManager",
+                "install-windowsfeature web-server, web-webserver -IncludeAllSubFeature",
+                "install-windowsfeature web-mgmt-tools",
             ]
         }
         },
@@ -159,11 +144,11 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
             "Linux"
             ]
         },
-        "name": "LinuxChangePassword",
+        "name": "LinuxWebServer",
         "inputs": {
             "runCommand": [
             "#!/bin/bash",
-            "echo -e \"{{Password}}\\n{{Password}}\" | passwd {{User}}"
+            "sudo yum update -y"
             ]
         }
         }
