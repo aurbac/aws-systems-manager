@@ -120,7 +120,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
     {
     "schemaVersion": "2.2",
-    "description": "Activate WebServer.",
+    "description": "Enabling a WebServer.",
     "parameters": {},
     "mainSteps": [
         {
