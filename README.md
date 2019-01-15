@@ -78,13 +78,13 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 1\. Go to Systems Manager service and click on **State Manager** under Actions section and click on **Create association** button.
 
-2\. Use the name `UpdateSSMDevelopment`.
+2\. Use the name `UpdateSSMAgent`.
 
 3\. In the Command Document, click in the search bar and select, **Document name prefix**, then click on **Equal**, then type in `AWS-UpdateSSMAgent` and enter.
 
 3\. Now select the **AWS-UpdateSSMAgent** document name that will upgrade Systems Management agent on the instances.
 
-4\. On Targets, select **Specifying a tag** and apply a filter using the tag key `Environment` and the value `Development`.
+4\. On Targets, select **Selecting all managed instances in this account**.
 
 5\. Specify schedule for **Every Day** at your preference time.
 
@@ -92,11 +92,11 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 #### AWS Config: Configuration change
 
-1\. Go to **Inventory** under Insights section, scroll down and on Corresponding managed instances and click in the AWS Config button for the `development-resources-AmazonLinux2` instance.
+1\. Once the status for **UpdateSSMAgent** association is **Success** go to **Inventory** under Insights section, scroll down and on Corresponding managed instances and click in the AWS Config button for the `development-resources-AmazonLinux2` instance.
 
 ![Inventory instances](https://github.com/aurbac/aws-systems-manager/raw/master/images/inventory-instances-config.png)
 
-2\. In the next page you will see a timeline changes for the instance, the last change will be selected, scroll down and expand the **Changes** section to see the change version for the SSM Agent.
+2\. In the next page you will see a timeline changes for the instance, the last change will be selected, scroll down and expand the **Changes** section to see the change version for the SSM Agent, you will see something similar like the following:
 
 ![SSM Agent change](https://github.com/aurbac/aws-systems-manager/raw/master/images/config-change.png)
 
