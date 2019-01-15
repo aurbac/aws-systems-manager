@@ -100,7 +100,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 ![SSM Agent change](https://github.com/aurbac/aws-systems-manager/raw/master/images/config-change.png)
 
-## Activiting a WebServer in Linux and Windows using a Document and Run Command
+## Enabling a WebServer in Linux and Windows using a Document and Run Command
 
 ### Documents
 
