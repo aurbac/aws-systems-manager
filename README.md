@@ -49,6 +49,12 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 * An S3 bucket for the maintenance window task.
 * An IAM Role for the maintenance window task.
 
+## Inventory of Systems Manager
+
+As the instances have de SSM Agent installed and the IAM permissions required to be accessed by Systems Manager, you can go to Systems Manager service and click on **Inventory** under Insights section, scroll down and you will see your instances added as follow:
+
+![SSM Instances added](https://github.com/aurbac/aws-systems-manager/raw/master/images/instances.png)
+
 ## Resource Groups for Production and Development services
 
 1\. Go to Systems Manager service and click on **Find Resources** under Resource Groups section.
@@ -247,4 +253,4 @@ We are going to create a special PatchBaseline that will only apply to Amazon Li
 **For testing purpose, you can edit the Maitenance Window to be executed in a nearby time, and go to History and refresh the page until you can see the task in progress and completed, explore the details and outputs to verify the patch baseline applied. Also you can go to Run Command and you will see command executed for the AWS-RunPatchBaseline.**
 
 For example, in the following image you can see the patch baseline applied for the Amazon Linux 2 instance, it should correspond to the patch baseline id created to be applied to instances with the tag **Patch Group** and value of **AmazonLinux2**.
-![SSM Agent change](https://github.com/aurbac/aws-systems-manager/raw/master/images/output-patch-amazon-linux-2.png)
+![Output Patch Amazon Linux 2](https://github.com/aurbac/aws-systems-manager/raw/master/images/output-patch-amazon-linux-2.png)
