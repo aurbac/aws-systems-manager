@@ -49,15 +49,17 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 * An S3 bucket for the maintenance window task.
 * An IAM Role for the maintenance window task.
 
-## Resource Groups
+## Resource Groups for Production and Development services
 
 1\. Go to Systems Manager service and click on **Find Resources** under Resource Groups section.
 
-2\. On the resource apply a filter using the tag key `Environment` and the value `Production` or `Development` and click **View query results**.
+2\. In **Grouping criteria** apply a filter using the tag key `Environment` and the value `Production` or `Development` and click **View query results**.
 
 3\. You will see the resources related to the environment, click on **Save query as group** and name the group as `Production-Services` or `Development-Services` and **Create group**.
 
-## Inventory
+In **Saved Resource Groups** under Resource Groups section you will see the resources groups created to explore.
+
+## Inventory for Production and Development instances
 
 1\. Go to Systems Manager service and click on **Inventory** under Insights section.
 
