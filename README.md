@@ -14,25 +14,29 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 
   a\. Go to CloudFormation service and click on **Create Stack**.
 
-  b\. Use the name `production-resources` or `development-resources` to identify the cloudformation stacks.
+  b\. Choose you template downloaded **AURBAC-AWS-Instances-For-SSM.yaml** and click **Next**.
 
-  c\. Select your KeyPair created previously, click **Next**.
+  c\. Use the name `production-resources` or `development-resources` to identify the cloudformation stacks.
 
-  d\. For the Options, add the tag key `Environment` and the value `Production` or `Development` depending on the stack to be created, click **Next**.
+  d\. Select your KeyPair created previously, click **Next**.
 
-  e\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
+  e\. For the Options, add the tag key `Environment` and the value `Production` or `Development` depending on the stack to be created, click **Next**.
+
+  f\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
 6\. Launch the CloudFormation template to create the S3 bucket and the role for the maintenance window task, [download the template to create the resources stack](https://raw.githubusercontent.com/aurbac/aws-systems-manager/master/AURBAC-AWS-SSM-Requirements.yaml).
 
   a\. Go to CloudFormation service and click on **Create Stack**.
 
-  b\. Use the name `ssm-requirements` identify the cloudformation stacks.
+  b\. Choose you template downloaded **AURBAC-AWS-SSM-Requirements.yaml** and click **Next**.
 
-  c\. Click **Next**.
+  c\. Use the name `ssm-requirements` identify the cloudformation stacks.
 
-  d\. For the Options, click **Next**.
+  d\. Click **Next**.
 
-  e\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
+  e\. For the Options, click **Next**.
+
+  f\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
 ### AWS Services created
 
