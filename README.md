@@ -242,9 +242,9 @@ We are going to create a special PatchBaseline that will only apply to Amazon Li
 
 16\. Use a **Concurrency** of `10` and an **Error threshold** of `1`.
 
-17\. For the **IAM service role** select **Use a custom service role** and select `ssm-requirements-RoleMaintenanceWindowTask-XXXXXXXXXXXXX`, it correspond to the output value of **ArnRoleMaintenanceWindowTask** for the **ssm-requirements** cloudformation stack.
+17\. For the **IAM service role** select **Use a custom service role** and select `ssm-requirements-RoleMaintenanceWindowTask-XXXXXXXXXXXXX`, it correspond to the output value of **ArnRoleMaintenanceWindowTask** from the **ssm-requirements** cloudformation stack.
 
-18\. For the **Output options** check **Enable writing to S3** and type output value of **BucketMaintenanceWindowTaskOutput** for the **ssm-requirements** cloudformation stack.
+18\. For the **Output options** check **Enable writing to S3** and type output value of **BucketMaintenanceWindowTaskOutput** from the **ssm-requirements** cloudformation stack.
 
 19\. In Parameters, for the **Operation** select **Install**.
 
