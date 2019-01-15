@@ -178,7 +178,15 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 **Once each instance task is finished you can check the web server by accessing by the public IP in your browser.**
 
-## Maintenance Windows and Patching
+## Patching Linux and Windows with Maintenance Windows
+
+### Patch Manager
+
+
+
+### Run Command
+
+We are going to create a special PatchBaseline that will only apply to Amazon Linux 2 instances based on the tag **Patch Group**, for rest of the instances will be applied the default Patch Baselines provided by AWS.
 
 1\. Go to Systems Manager service and click on **Maintenance Windows** under Actions section and click on **Create Maintenance Window** button.
 
