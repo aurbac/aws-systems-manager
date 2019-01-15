@@ -190,6 +190,8 @@ Resources:
             - ''
             - - !Ref 'AWS::StackName'
               - -AmazonLinux2
+        - Key: Patch Group
+          Value: AmazonLinux2
       UserData: !Base64
         Fn::Join:
           - ''

@@ -14,7 +14,7 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 
   a\. Go to CloudFormation service and click on **Create Stack**.
 
-  b\. Choose you template downloaded **AURBAC-AWS-Instances-For-SSM.yaml** and click **Next**.
+  b\. Choose your template downloaded **AURBAC-AWS-Instances-For-SSM.yaml** and click **Next**.
 
   c\. Use the name `production-resources` or `development-resources` to identify the cloudformation stacks.
 
@@ -28,7 +28,7 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 
   a\. Go to CloudFormation service and click on **Create Stack**.
 
-  b\. Choose you template downloaded **AURBAC-AWS-SSM-Requirements.yaml** and click **Next**.
+  b\. Choose your template downloaded **AURBAC-AWS-SSM-Requirements.yaml** and click **Next**.
 
   c\. Use the name `ssm-requirements` identify the cloudformation stacks.
 
@@ -40,10 +40,11 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 
 ### AWS Services created
 
-* Two amazon VPC environments with two public subnets, each on with:
-  * EC2 instance Amazon Linux 2 (t2.micro) with IAM Role.
-  * EC2 instance Windows 2012 (t2.medium) with IAM Role.
-  * EC2 instance Windows 2016 (t2.medium) with IAM Role.
+* Two amazon VPC environments with two public subnets, each one with:
+  * EC2 instance Amazon Linux 2 (t2.micro) with IAM Role and Tags (Environment and Patch Group).
+  * EC2 instance Centos 7 (t2.micro) with IAM Role and Tag (Environment).
+  * EC2 instance Windows 2012 (t2.medium) with IAM Role and Tag (Environment).
+  * EC2 instance Windows 2016 (t2.medium) with IAM Role and Tag (Environment).
   * Each instance has an IAM Role with the policy required for Systems Manager: **AmazonEC2RoleforSSM**
 * An S3 bucket for the maintenance window task.
 * An IAM Role for the maintenance window task.
