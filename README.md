@@ -182,7 +182,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 We are going to create a special PatchBaseline that will only apply to Amazon Linux 2 instances based on the tag **Patch Group**, for rest of the instances will be applied the default Patch Baselines provided by AWS.
 
-### Patch Manager
+### Patch Baseline
 
 1\. Go to Systems Manager service and click on **Patch Manager** under Actions section and click on **Create Maintenance Window** button.
 
