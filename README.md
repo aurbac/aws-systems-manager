@@ -100,7 +100,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 ![SSM Agent change](https://github.com/aurbac/aws-systems-manager/raw/master/images/config-change.png)
 
-## Change password Windows/Linux
+## Activiting a WebServer in Linux and Windows using a Document and Run Command
 
 ### Documents
 
@@ -166,7 +166,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 2\. On the Run a command page, click in the search bar and select, **Owner**, then click on **Owned by me**.
 
-3\. Now select the **ChangePassword** document name that we created previously.
+3\. Now select the **ActivateWebServer** document name that we created previously.
 
 4\. For the command paramters we are going to use the default values, where Password is referenced for the Paramater Store created.
 
@@ -176,7 +176,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 6\. Next you will see page documenting your running command then and overall success in green.
 
-**Now you can get into you Windows/Linux instances with the new password.**
+**Once each instance task is finished you can check the web server by accessing by the public IP in your browser.**
 
 ## Maintenance Windows and Patching
 
