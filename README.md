@@ -180,15 +180,33 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 ## Patching Linux and Windows with Maintenance Windows
 
+We are going to create a special PatchBaseline that will only apply to Amazon Linux 2 instances based on the tag **Patch Group**, for rest of the instances will be applied the default Patch Baselines provided by AWS.
+
 ### Patch Manager
 
+1\. Go to Systems Manager service and click on **Patch Manager** under Actions section and click on **Create Maintenance Window** button.
 
+2\. Use the name `AmazonLinux2`.
+
+3.\ For the **Operating system** select `Amazon Linux 2`.
+
+4.\ For aproval rules leave the configuration for **All** or be specific in the clasification and severity.
+
+5.\ Click on **Create patch baseline**.
+
+6.\ Refesh the page until you can see the new patch baseline, select it and click on **Actions** and **Modify patch groups**.
+
+7.\ In the **Patch groups** field type `AmazonLinux2` and click on **Add**.
+
+8.\ Click in **Close**.
+
+**Remember that this new patch baseline will only apply to instances tagged with "Patch Group" and the value of "AmazonLinux2".**
 
 ### Run Command
 
-We are going to create a special PatchBaseline that will only apply to Amazon Linux 2 instances based on the tag **Patch Group**, for rest of the instances will be applied the default Patch Baselines provided by AWS.
+1\. Go to Systems Manager service and click on **Maintenance Windows** under Actions section, click on **default patch baselines** link and click on **Create patch baseline** button.
 
-1\. Go to Systems Manager service and click on **Maintenance Windows** under Actions section and click on **Create Maintenance Window** button.
+
 
 2\. Use the name `MaitenanceWindows2012Prod`.
 
