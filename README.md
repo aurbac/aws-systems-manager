@@ -110,7 +110,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 3\. On Document type select **Command document** and content **JSON** type.
 
-4\. Copy and replace in the field text with the follwing following structure:
+4\. Copy and replace in the field text for **Content** with the follwing following structure:
 
     {
     "schemaVersion": "2.2",
@@ -132,7 +132,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
                 "New-Item -ItemType directory -Path 'C:\temp'",
                 "Import-Module ServerManager",
                 "install-windowsfeature web-server, web-webserver -IncludeAllSubFeature",
-                "install-windowsfeature web-mgmt-tools",
+                "install-windowsfeature web-mgmt-tools"
             ]
         }
         },
@@ -157,6 +157,8 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
         }
     ]
     }
+
+5\. Scroll down and click **Create document**.
 
 ### Run Command
 
