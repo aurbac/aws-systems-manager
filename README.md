@@ -73,6 +73,33 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 **NOTE:** Aditionally, you can create an inventory that search for **Files** or the **Windows Registry**, [example configuration in the Configuring Collection section in step 6](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html).
 
+
+## SSM Agent update with State Manager
+
+1\. Go to Systems Manager service and click on **State Manager** under Actions section and click on **Create association** button.
+
+2\. Use the name `UpdateSSMDevelopment`.
+
+3\. In the Command Document, click in the search bar and select, **Document name prefix**, then click on **Equal**, then type in `AWS-UpdateSSMAgent` and enter.
+
+3\. Now select the **AWS-UpdateSSMAgent** document name that will upgrade Systems Management agent on the instances.
+
+4\. On Targets, select **Specifying a tag** and apply a filter using the tag key `Environment` and the value `Development`.
+
+5\. Specify schedule for **Every Day** at your preference time.
+
+6\. Scroll down and click **Create association**.
+
+#### AWS Config: Configuration change
+
+1\. Go to **Inventory** under Insights section, scroll down and on Corresponding managed instances and click in the AWS Config button for the `development-resources-AmazonLinux2` instance.
+
+![Inventory instances](https://github.com/aurbac/aws-systems-manager/raw/master/images/inventory-instances-config.png)
+
+2\. In the next page you will see a timeline changes for the instance, the last change will be selected, scroll down and expand the **Changes** section to see the change version for the SSM Agent.
+
+![SSM Agent change](https://github.com/aurbac/aws-systems-manager/raw/master/images/config-change.png)
+
 ## Change password Windows/Linux
 
 ### Parameter Store
@@ -185,28 +212,3 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 11\. You can see the details for the maintenance window, the tasks, targets and the history of executions.
 
-## State Manager
-
-1\. Go to Systems Manager service and click on **State Manager** under Actions section and click on **Create association** button.
-
-2\. Use the name `UpdateSSMDevelopment`.
-
-3\. In the Command Document, click in the search bar and select, **Document name prefix**, then click on **Equal**, then type in `AWS-UpdateSSMAgent` and enter.
-
-3\. Now select the **AWS-UpdateSSMAgent** document name that will upgrade Systems Management agent on the instances.
-
-4\. On Targets, select **Specifying a tag** and apply a filter using the tag key `Environment` and the value `Development`.
-
-5\. Specify schedule for **Every Day** at your preference time.
-
-6\. Scroll down and click **Create association**.
-
-#### AWS Config: Configuration change
-
-1\. Go to **Inventory** under Insights section, scroll down and on Corresponding managed instances and click in the AWS Config button for the `development-resources-AmazonLinux2` instance.
-
-![Inventory instances](https://github.com/aurbac/aws-systems-manager/raw/master/images/inventory-instances-config.png)
-
-2\. In the next page you will see a timeline changes for the instance, the last change will be selected, scroll down and expand the **Changes** section to see the change version for the SSM Agent.
-
-![SSM Agent change](https://github.com/aurbac/aws-systems-manager/raw/master/images/config-change.png)
