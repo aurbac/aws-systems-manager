@@ -1,5 +1,5 @@
-Description: Create a S3 bucket and IAM Role for maintenance window task - By Uriel
-  Ramirez
+Description: Create Amazon S3 buckets and IAM Role for maintenance window task - By
+  Uriel Ramirez
 Outputs:
   ArnRoleMaintenanceWindowTask:
     Description: Arn Role for the maintenance window task
@@ -10,8 +10,17 @@ Outputs:
     Description: Name of S3 bucket for maintenance windows task output
     Export:
       Name: !Sub '${AWS::StackName}-bucket-maintenance-window-task-output'
-    Value: !Ref 'S3Bucket'
+    Value: !Ref 'BucketMaintenanceWindowTask'
+  BucketSessionsOutput:
+    Description: Name of S3 bucket for sessions output
+    Export:
+      Name: !Sub '${AWS::StackName}-bucket-sessions-output'
+    Value: !Ref 'BucketSessions'
 Resources:
+  BucketMaintenanceWindowTask:
+    Type: AWS::S3::Bucket
+  BucketSessions:
+    Type: AWS::S3::Bucket
   RoleMaintenanceWindowTask:
     Properties:
       AssumeRolePolicyDocument:
@@ -26,6 +35,4 @@ Resources:
         - arn:aws:iam::aws:policy/service-role/AmazonSSMMaintenanceWindowRole
       Path: /
     Type: AWS::IAM::Role
-  S3Bucket:
-    Type: AWS::S3::Bucket
 

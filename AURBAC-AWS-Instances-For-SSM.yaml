@@ -1,28 +1,6 @@
 Description: Create a VPC and Linux/Windows EC2 instances - By Uriel Ramirez
 Mappings:
   AmazonLinux2Map:
-    ap-northeast-1:
-      AMI: ami-00f9d04b3b3092052
-    ap-northeast-2:
-      AMI: ami-0c764df09c35858b8
-    ap-south-1:
-      AMI: ami-00796998f258969fd
-    ap-southeast-1:
-      AMI: ami-085fd1bd447be68e8
-    ap-southeast-2:
-      AMI: ami-0b8dea0e70b969adc
-    ca-central-1:
-      AMI: ami-05cac140c6a1fb960
-    eu-central-1:
-      AMI: ami-02ea8f348fa28c108
-    eu-west-1:
-      AMI: ami-0a5e707736615003c
-    eu-west-2:
-      AMI: ami-017b0e29fac27906b
-    eu-west-3:
-      AMI: ami-04992646d54c69ef4
-    sa-east-1:
-      AMI: ami-0160a8b6087883cb6
     us-east-1:
       AMI: ami-013be31976ca2c322
     us-east-2:
@@ -32,30 +10,6 @@ Mappings:
     us-west-2:
       AMI: ami-061e7ebbc234015fe
   Centos7Map:
-    ap-northeast-1:
-      AMI: ami-8e8847f1
-    ap-northeast-2:
-      AMI: ami-bf9c36d1
-    ap-south-1:
-      AMI: ami-1780a878
-    ap-southeast-1:
-      AMI: ami-8e0205f2
-    ap-southeast-2:
-      AMI: ami-d8c21dba
-    ca-central-1:
-      AMI: ami-e802818c
-    eu-central-1:
-      AMI: ami-dd3c0f36
-    eu-north-1:
-      AMI: ami-b133bccf
-    eu-west-1:
-      AMI: ami-3548444c
-    eu-west-2:
-      AMI: ami-00846a67
-    eu-west-3:
-      AMI: ami-262e9f5b
-    sa-east-1:
-      AMI: ami-cb5803a7
     us-east-1:
       AMI: ami-9887c6e7
     us-east-2:
@@ -65,63 +19,19 @@ Mappings:
     us-west-2:
       AMI: ami-3ecc8f46
   Windows2012Map:
-    ap-northeast-1:
-      AMI: ami-0a45b66bda01c89c8
-    ap-northeast-2:
-      AMI: ami-0b3a3970b73d5b63a
-    ap-south-1:
-      AMI: ami-0bd1dc65d74266ee2
-    ap-southeast-1:
-      AMI: ami-0bf96f139bff648cc
-    ap-southeast-2:
-      AMI: ami-0664c039c4dea5193
-    ca-central-1:
-      AMI: ami-0a27bbef221046aae
-    eu-central-1:
-      AMI: ami-0d55859ee09a59138
-    eu-west-1:
-      AMI: ami-01dbaf1c50a36891d
-    eu-west-2:
-      AMI: ami-0a7551990da17b8d6
-    eu-west-3:
-      AMI: ami-040ef025ec13d58bf
-    sa-east-1:
-      AMI: ami-01d74c2e93478e2f5
     us-east-1:
-      AMI: ami-0fba87d7f8c8744d4
+      AMI: ami-031f3664c97bc6f9d
     us-east-2:
-      AMI: ami-0679e5ac84d15f15e
+      AMI: ami-0b5a579ce0cdfab3a
     us-west-1:
-      AMI: ami-04370c2a300903acc
+      AMI: ami-0085695011d57c9cd
     us-west-2:
-      AMI: ami-02e27664434db6def
+      AMI: ami-03aacb843b680d6f8
   Windows2016Map:
-    ap-northeast-1:
-      AMI: ami-0134dae8964ea643c
-    ap-northeast-2:
-      AMI: ami-0c6a4d561b38c05ed
-    ap-south-1:
-      AMI: ami-0e9c4931f7c9d73f6
-    ap-southeast-1:
-      AMI: ami-098731bcd06ea9ca6
-    ap-southeast-2:
-      AMI: ami-0096a7a7add65af89
-    ca-central-1:
-      AMI: ami-04a4290c9c20574d9
-    eu-central-1:
-      AMI: ami-06af8c775c56b30ca
-    eu-west-1:
-      AMI: ami-0cd8a780065ea078f
-    eu-west-2:
-      AMI: ami-0f5f78829606035fc
-    eu-west-3:
-      AMI: ami-0152e5e7567b014fc
-    sa-east-1:
-      AMI: ami-0c3faf6ff12a7f005
     us-east-1:
-      AMI: ami-050202fb72f001b47
+      AMI: ami-0bf148826ef491d16
     us-east-2:
-      AMI: ami-028779930ada5200c
+      AMI: ami-08b4a0f6e106c1dba
     us-west-1:
       AMI: ami-08838e38cfe4854ad
     us-west-2:
