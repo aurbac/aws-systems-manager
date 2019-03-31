@@ -81,15 +81,21 @@ As the instances have de SSM Agent installed and the IAM permissions required to
 
 3.1\. Go to Systems Manager console on the **Find Resources** page https://console.aws.amazon.com/resource-groups/resources.
 
-3.2\. In **Grouping criteria** apply a filter using the Tag key `Environment` and the value `Production` or `Development` and click **View query results**.
+3.2\. In **Grouping criteria** add a filter using the Tag key `Environment` and the value `Production` or `Development` and click **View query results**.
 
 ![View query results](images/resource-group-query.png)
 
-3.3\. You will see the resources related to the environment, click on **Save query as group**.
+3.3\. Scroll down, you will see the resources related to the environment, click on **Save query as group**.
+
+![Save query](images/resource-group-query-result.png)
 
 3.4\. Scroll down and for the **Group Name** type `Production-Services` or `Development-Services` and **Create group**.
 
+![Create group](images/resource-group-create.png)
+
 3.5\. Go to Systems Manager console on the **Saved Resource Groups** page https://console.aws.amazon.com/resource-groups/groups you will see the resources groups created to explore.
+
+![Groups](images/resource-group-list.png)
 
 ## Inventory for Production and Development instances
 
