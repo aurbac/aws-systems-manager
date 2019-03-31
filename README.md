@@ -73,23 +73,25 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 
 ## Inventory of Systems Manager
 
-As the instances have de SSM Agent installed and the IAM permissions required to be accessed by Systems Manager, you can go to Systems Manager service and click on **Inventory** under Insights section, scroll down and you will see your instances added as follow:
+As the instances have de SSM Agent installed and the IAM permissions required to be accessed by Systems Manager, you can go to Systems Manager **Inventory** https://console.aws.amazon.com/systems-manager/inventory, scroll down and you will see your instances added as follow:
 
 ![SSM Instances added](images/instances.png)
 
 ## Resource Groups for Production and Development services
 
-3.1\. Go to Systems Manager service and click on **Find Resources** under Resource Groups section.
+3.1\. Go to Systems Manager console on the **Find Resources** page https://console.aws.amazon.com/resource-groups/resources.
 
-3.2\. In **Grouping criteria** apply a filter using the tag key `Environment` and the value `Production` or `Development` and click **View query results**.
+3.2\. In **Grouping criteria** apply a filter using the Tag key `Environment` and the value `Production` or `Development` and click **View query results**.
 
-3.3\. You will see the resources related to the environment, click on **Save query as group** and name the group as `Production-Services` or `Development-Services` and **Create group**.
+3.3\. You will see the resources related to the environment, click on **Save query as group**.
 
-In **Saved Resource Groups** under Resource Groups section you will see the resources groups created to explore.
+3.4\. Scroll down and for the **Group Name** type `Production-Services` or `Development-Services` and **Create group**.
+
+3.5\. Go to Systems Manager console on the **Saved Resource Groups** page https://console.aws.amazon.com/resource-groups/groups you will see the resources groups created to explore.
 
 ## Inventory for Production and Development instances
 
-4.1\. Go to Systems Manager service and click on **Inventory** under Insights section.
+4.1\. Go to Systems Manager console on the **Inventory** page https://console.aws.amazon.com/systems-manager/inventory.
 
 4.2\. Click on **Setup Inventory**.
 
@@ -104,7 +106,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 
 ## Update the SSM Agent with State Manager
 
-5.1\. Go to Systems Manager service and click on **State Manager** under Actions section and click on **Create association** button.
+5.1\. Go to Systems Manager console on **State Manager** page https://console.aws.amazon.com/systems-manager/state-manager and click on **Create association** button.
 
 5.2\. Use the name `UpdateSSMAgent`.
 
