@@ -4,12 +4,12 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 
 ### Table of Contents
 **[Preparing the environment](#preparing-the-environment)**<br>
-**[2. Inventory of Systems Manager](#inventory-of-systems-manager)**<br>
-**[3. Resource Groups for Production and Development services](#resource-groups)**<br>
-**[4. Inventory for Production and Development instances](#inventory)**<br>
-**[5. Update the SSM Agent with State Manager](#state-manager)**<br>
-**[6. Enabling a WebServer in Linux and Windows using a Document and Run Command](#document-and-run-command)**<br>
-**[7. Patching Linux and Windows with Maintenance Windows](#patching-and-maintenance-windows)**<br>
+**[nventory of Systems Manager](#inventory-of-systems-manager)**<br>
+**[Resource Groups for Production and Development services](#resource-groups)**<br>
+**[Inventory for Production and Development instances](#inventory)**<br>
+**[Update the SSM Agent with State Manager](#state-manager)**<br>
+**[Enabling a WebServer in Linux and Windows using a Document and Run Command](#document-and-run-command)**<br>
+**[Patching Linux and Windows with Maintenance Windows](#patching-and-maintenance-windows)**<br>
 
 ## Preparing the environment
 
@@ -69,13 +69,13 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 * An IAM Role for the maintenance window task.
 * An S3 bucket for session manager.
 
-## 2. Inventory of Systems Manager
+## Inventory of Systems Manager
 
 As the instances have de SSM Agent installed and the IAM permissions required to be accessed by Systems Manager, you can go to Systems Manager service and click on **Inventory** under Insights section, scroll down and you will see your instances added as follow:
 
 ![SSM Instances added](images/instances.png)
 
-## 3. Resource Groups for Production and Development services
+## Resource Groups for Production and Development services
 
 3.1\. Go to Systems Manager service and click on **Find Resources** under Resource Groups section.
 
@@ -85,7 +85,7 @@ As the instances have de SSM Agent installed and the IAM permissions required to
 
 In **Saved Resource Groups** under Resource Groups section you will see the resources groups created to explore.
 
-## 4. Inventory for Production and Development instances
+## Inventory for Production and Development instances
 
 4.1\. Go to Systems Manager service and click on **Inventory** under Insights section.
 
@@ -100,7 +100,7 @@ In **Saved Resource Groups** under Resource Groups section you will see the reso
 **NOTE:** Aditionally, you can create an inventory that search for **Files** or the **Windows Registry**, [example configuration in the Configuring Collection section in step 6](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html).
 
 
-## 5. Update the SSM Agent with State Manager
+## Update the SSM Agent with State Manager
 
 5.1\. Go to Systems Manager service and click on **State Manager** under Actions section and click on **Create association** button.
 
@@ -126,7 +126,7 @@ b\. In the next page you will see a timeline changes for the instance, the last 
 
 ![SSM Agent change](images/config-change.png)
 
-## 6. Enabling a WebServer in Linux and Windows using a Document and Run Command
+## Enabling a WebServer in Linux and Windows using a Document and Run Command
 
 ### Documents
 
@@ -204,7 +204,7 @@ b\. In the next page you will see a timeline changes for the instance, the last 
 
 **Once each instance task is finished you can check the web server by accessing by the public IP in your browser.**
 
-## 7. Patching Linux and Windows with Maintenance Windows
+## Patching Linux and Windows with Maintenance Windows
 
 We are going to create a special PatchBaseline that will only apply to Amazon Linux 2 instances based on the tag **Patch Group**, for rest of the instances will be applied the default Patch Baselines provided by AWS.
 
