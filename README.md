@@ -83,6 +83,8 @@ As the instances have de SSM Agent installed and the IAM permissions required to
 
 3.2\. In **Grouping criteria** apply a filter using the Tag key `Environment` and the value `Production` or `Development` and click **View query results**.
 
+![View query results](images/resource-group-query.png)
+
 3.3\. You will see the resources related to the environment, click on **Save query as group**.
 
 3.4\. Scroll down and for the **Group Name** type `Production-Services` or `Development-Services` and **Create group**.
