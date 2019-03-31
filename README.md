@@ -3,7 +3,7 @@
 Hello, this is a self-paced workshop designed to explore the main features inside AWS Systems Manager.
 
 ### Table of Contents
-**[1. Preparing the environment](#preparing-the-environment)**<br>
+**[1 Preparing the environment](#preparing-the-environment)**<br>
 **[2. Inventory of Systems Manager](#inventory-of-systems-manager)**<br>
 **[3. Resource Groups for Production and Development services](#resource-groups)**<br>
 **[4. Inventory for Production and Development instances](#inventory)**<br>
@@ -11,7 +11,7 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 **[6. Enabling a WebServer in Linux and Windows using a Document and Run Command](#document-and-run-command)**<br>
 **[7. Patching Linux and Windows with Maintenance Windows](#patching-and-maintenance-windows)**<br>
 
-## 1. Preparing the environment
+## 1 Preparing the environment
 
 1.1\. Log into the AWS Management Console and choose the preferred [AWS region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
 
