@@ -117,21 +117,29 @@ As the instances have de SSM Agent installed and the IAM permissions required to
 
 5.1\. Go to Systems Manager console on **State Manager** page https://console.aws.amazon.com/systems-manager/state-manager and click on **Create association** button.
 
-5.2\. Use the name `UpdateSSMAgent`.
+5.2\. For the **Name** type `UpdateSSMAgent`.
 
 5.3\. In the Command Document, click in the search bar and select, **Document name prefix**, then click on **Equal**, then type in `AWS-UpdateSSMAgent` and enter.
 
+![Document](images/sm-document.png)
+
 5.4\. Now select the **AWS-UpdateSSMAgent** document name that will upgrade Systems Management agent on the instances.
 
-5.5\. On Targets, select **Selecting all managed instances in this account**.
+![Document Select](images/sm-document-select.png)
+
+5.5\. On Targets, select **Selecting all managed instances in this region under this account**.
 
 5.6\. Specify schedule for **Every Day** at your preference time.
 
+![Schedule](images/sm-schedule.png)
+
 5.7\. Scroll down and click **Create association**.
+
+![State Manager List](images/sm-list.png)
 
 #### AWS Config: Configuration change
 
-a\. Once the status for **UpdateSSMAgent** association is **Success** go to **Inventory** under Insights section, scroll down and on Corresponding managed instances and click in the AWS Config button for the `development-resources-AmazonLinux2` instance.
+a\. Once the status for **UpdateSSMAgent** association is **Success** go to **Inventory** under Insights section, scroll down and on Corresponding managed instances and click in the AWS Config button for the **development-resources-AmazonLinux2** instance.
 
 ![Inventory instances](images/inventory-instances-config.png)
 
