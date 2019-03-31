@@ -5,11 +5,11 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 ### Table of Contents
 **[Preparing the environment](#preparing-the-environment)**<br>
 **[nventory of Systems Manager](#inventory-of-systems-manager)**<br>
-**[Resource Groups for Production and Development services](#resource-groups)**<br>
-**[Inventory for Production and Development instances](#inventory)**<br>
-**[Update the SSM Agent with State Manager](#state-manager)**<br>
-**[Enabling a WebServer in Linux and Windows using a Document and Run Command](#document-and-run-command)**<br>
-**[Patching Linux and Windows with Maintenance Windows](#patching-and-maintenance-windows)**<br>
+**[Resource Groups for Production and Development services](#resource-groups-for-production-and-development-services)**<br>
+**[Inventory for Production and Development instances](#inventory-for-production-and-development-instances)**<br>
+**[Update the SSM Agent with State Manager](#update-the-ssm-agent-with-state-manager)**<br>
+**[Enabling a WebServer in Linux and Windows using a Document and Run Command](#enabling-a-webserver-in-linux-and-windows-using-a-document-and-run-command)**<br>
+**[Patching Linux and Windows with Maintenance Windows](#patching-linux-and-windows-with-maintenance-windows)**<br>
 
 ## Preparing the environment
 
@@ -19,13 +19,13 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 
 1.3\. [We need to create a Keypair to log in to the ec2 instances.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
 
-1.4\. Go to the AWS Marketplace for Centos 9 https://aws.amazon.com/marketplace/pp/B00O7WM7QW?qid=1554065489734, choose **Continue to Subscribe** and choose **Accept Terms**.
+1.4\. Go to the AWS Marketplace for CentOS 7 https://aws.amazon.com/marketplace/pp/B00O7WM7QW?qid=1554065489734, choose **Continue to Subscribe** and choose **Accept Terms**.
 
 ![Centos Continue to Subscribe](images/centos-1.png)
 
 ![Centos Accept Terms](images/centos-2.png)
 
-1.5\. Launch the [CloudFormation template](AURBAC-AWS-Instances-For-SSM.yaml) two times for your selected region, the first one for the **production** environment and the second one for the **development** environment.
+1.5\. Download the [CloudFormation template](AURBAC-AWS-Instances-For-SSM.yaml), we are going to launch it two times in your selected region, the first one for the **production** environment and the second one for the **development** environment.
 
   a\. Open the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation
   
