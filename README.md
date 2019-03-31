@@ -105,12 +105,13 @@ As the instances have de SSM Agent installed and the IAM permissions required to
 
 4.3\. Use the name `Inventory-Association-For-Production` or `Inventory-Association-For-Development`.
 
-4.4\. In Targets section click on **Specifying a tag** and use the tag key `Environment` and the value `Production` or `Development` and click **Setup Inventory**.
+4.4\. In **Targets** section click on **Specifying a tag** and use the tag key `Environment` and the value `Production` or `Development` and click **Setup Inventory**.
 
-4.5\. Click on **State Manager** under Actions section, you will see the Associations created to collect the information for every environment and the Last execution.
+4.5\. Go to **State Manager** page https://console.aws.amazon.com/systems-manager/state-manager, you will see the Associations created to collect the information for every environment and the Last execution.
+
+![State Manager](images/state-manager.png)
 
 **NOTE:** Aditionally, you can create an inventory that search for **Files** or the **Windows Registry**, [example configuration in the Configuring Collection section in step 6](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html).
-
 
 ## Update the SSM Agent with State Manager
 
@@ -142,7 +143,7 @@ b\. In the next page you will see a timeline changes for the instance, the last 
 
 ### Documents
 
-6.1\. Go to Systems Manager service and click on **Documents** under Shared Resources section and click on **Create document** button.
+6.1\. Go to Systems Manager console on **Documents** page https://console.aws.amazon.com/systems-manager/documents and click on **Create document** button.
 
 6.2\. Use the name `ActivateWebServer` for the new document.
 
