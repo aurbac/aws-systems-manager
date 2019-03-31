@@ -1,10 +1,10 @@
-# AWS Systems Manager
+# ![AWS Systems Manager](images/ssm.png) Working with AWS Systems Manager
 
 Hello, this is a self-paced workshop designed to explore the main features inside AWS Systems Manager.
 
 ### Table of Contents
 **[Preparing the environment](#preparing-the-environment)**<br>
-**[nventory of Systems Manager](#inventory-of-systems-manager)**<br>
+**[Inventory of Systems Manager](#inventory-of-systems-manager)**<br>
 **[Resource Groups for Production and Development services](#resource-groups-for-production-and-development-services)**<br>
 **[Inventory for Production and Development instances](#inventory-for-production-and-development-instances)**<br>
 **[Update the SSM Agent with State Manager](#update-the-ssm-agent-with-state-manager)**<br>
@@ -56,6 +56,8 @@ Hello, this is a self-paced workshop designed to explore the main features insid
   f\. For the **Options**, click **Next**.
 
   g\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
+
+![Cloudformation Stacks](images/stacks.png)
 
 ### AWS Services created
 
