@@ -235,9 +235,9 @@ We are going to create a special PatchBaseline that will only apply to Amazon Li
 
 ### Patch Baseline
 
-7.1\. Go to Systems Manager console on the **Patch Manager** page https://console.aws.amazon.com/systems-manager/patch-manager and click on **default patch baselines.** link.
+7.1\. Go to Systems Manager console on the **Patch Manager** page https://console.aws.amazon.com/systems-manager/patch-manager and click on **default patch baselines** link.
 
-![Patch Link](images/ptach-link.png)
+![Patch Link](images/patch-link.png)
 
 7.2\. Choose **Create patch baseline**.
 
@@ -263,19 +263,21 @@ We are going to create a special PatchBaseline that will only apply to Amazon Li
 
 ### Maintenance Windows
 
-7.10\. Go to Systems Manager service and click on **Maintenance Windows** under Actions section, click on **Create maintenance window**.
+7.10\. Go to Systems Manager console on **Maintenance Windows** page https://console.aws.amazon.com/systems-manager/maintenance-windows and click on **Create Maintenance Window**.
 
-7.11\. Use the name `MaitenanceWindowForDevelopmentInstances`.
+7.11\. For the **Name** type `MaitenanceWindowForDevelopmentInstances`.
 
-7.12\. Schedule the maitenance for every day at the desired time.
+7.12\. Schedule the maitenance for every day at the desired time, prefered 5 minutes ahead of your current time.
 
 7.13\. Specify a duration of `2` and stop initiating tasks of `1`.
 
 7.14\. You can select your **Schedule timezone** prefered.
 
+![Schedule](images/mw-schedule.png)
+
 7.15\. Click on **Create maintenance window**.
 
-7.16\. To configure the targets click on the maintenance window created, go to **Targets** and click on **Register target**.
+7.16\. To configure the targets click on your maintenance Window ID, go to **Targets** and click on **Register target**.
 
 7.17\. For the **Target Name** type `DevelopmentInstances`.
 
@@ -285,25 +287,47 @@ We are going to create a special PatchBaseline that will only apply to Amazon Li
 
 7.20\. Now go to **Tasks** of the maintenance window and click on **Register tasks** and **Register Run command task**.
 
+![Run Command](images/mw-run-command.png)
+
 7.21\. For the **Name** type `DevelopmentInstances`.
 
-7.22\. In the Command Document, click in the search bar and select, **Document name prefix**, then click on **Equal**, then type in `AWS-RunPatchBaseline` and enter.
+7.22\. In the **Command document** section click in the search bar and select, **Document name prefix**, then click on **Equal**, then type in `AWS-RunPatchBaseline` and enter.
 
 7.23\. Now select the **AWS-RunPatchBaseline** document name that will apply the patches depending of the operating systen and Patch Group tag.
 
+![Register Run Command](images/mw-register-run-command.png)
+
 7.24\. In Targets select the target created **DevelopmentInstances**.
 
-7.25\. Use a **Concurrency** of `10` and an **Error threshold** of `1`.
+![Targets](images/mw-register-target.png)
 
-7.26\. For the **IAM service role** select **Use a custom service role** and select `ssm-requirements-RoleMaintenanceWindowTask-XXXXXXXXXXXXX`, it correspond to the output value of **ArnRoleMaintenanceWindowTask** from the **ssm-requirements** cloudformation stack.
+7.25\. In **Rate control** use a **Concurrency** of `10` and an **Error threshold** of `1`.
+
+![Rate](images/mw-rate.png)
+
+7.26\. For the **IAM service role** select **Use a custom service role** and select `ssm-requirements-RoleMaintenanceWindowTask-XXXXXXXX`, it correspond to the output value of **ArnRoleMaintenanceWindowTask** from the **ssm-requirements** cloudformation stack.
+
+![Role](images/mw-role.png)
 
 7.27\. For the **Output options** check **Enable writing to S3** and type output value of **BucketMaintenanceWindowTaskOutput** from the **ssm-requirements** cloudformation stack.
 
-7.28\. In Parameters, for the **Operation** select **Install**.
+![S3](images/mw-s3.png)
+
+7.28\. In **Parameters**, for the **Operation** select **Install**.
+
+![Parameter](images/mw-parameter.png)
 
 7.29\. Click on **Register Run command task**.
 
-**For testing purpose, you can edit the Maitenance Window to be executed in a nearby time, and go to History and refresh the page until you can see the task in progress and completed, explore the details and outputs to verify the patch baseline applied. Also you can go to Run Command and you will see command executed for the AWS-RunPatchBaseline.**
+**Note:** For testing purpose, you can edit the Maitenance Window to be executed in a nearby time.
+
+7.30\. Go to **History** tab and refresh the page until you can see the task in progress and completed, explore the details and outputs to verify the patch baseline applied, select your Window execution ID and click on **View details**, select your task invocation ID and click on **View details**.
+
+![History](images/my-history.png)
+
+**Note:** Also you can go to Run Command and you will see command executed for the AWS-RunPatchBaseline.
+
+![Command](images/mw-command.png)
 
 For example, in the following image you can see the patch baseline applied for the Amazon Linux 2 instance, it should correspond to the patch baseline id created to be applied to instances with the tag **Patch Group** and value of **AmazonLinux2**.
 ![Output Patch Amazon Linux 2](images/output-patch-amazon-linux-2.png)
