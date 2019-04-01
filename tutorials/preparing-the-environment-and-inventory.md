@@ -60,6 +60,8 @@
 * An IAM Role for the maintenance window task.
 * An S3 bucket for session manager.
 
+![AWS Services](../images/aws-services.png)
+
 ## 3. Inventory of Systems Manager
 
 As the instances have de SSM Agent installed and the IAM permissions required to be accessed by Systems Manager, you can go to Systems Manager **Inventory** https://console.aws.amazon.com/systems-manager/inventory.
