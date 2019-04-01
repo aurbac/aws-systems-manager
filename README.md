@@ -7,7 +7,7 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 ## Modules
 
 This workshop is broken up into multiple modules and you can use **N. Virginia, Ohio, Oregon** or **California** Region.
-The module 1 **Preparing the environment and Inventory** is required before proceeding to the next:
+The module 1 **Preparing the environment and Inventory** is required before proceeding to the next.
 
 1\. [Preparing the environment and Inventory](tutorials/preparing-the-environment-and-inventory.md "Preparing the environment and Inventory")
 
