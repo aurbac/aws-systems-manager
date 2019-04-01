@@ -2,6 +2,8 @@
 
 ## 1. Setup Inventory
 
+We are going to setup up two associations, for **production** and **development** instances.
+
 1.1\. Go to Systems Manager console on the **Inventory** page https://console.aws.amazon.com/systems-manager/inventory.
 
 1.2\. Click on **Setup Inventory**.

@@ -2,6 +2,8 @@
 
 ## 1. Create Resource Groups
 
+We are going to create two resource groups, for **production** and **development** services.
+
 1.1\. Go to Systems Manager console on the **Find Resources** page https://console.aws.amazon.com/resource-groups/resources.
 
 1.2\. In **Grouping criteria** add a filter using the Tag key `Environment` and the value `Production` or `Development` and click **View query results**.

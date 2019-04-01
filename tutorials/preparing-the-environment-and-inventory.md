@@ -1,4 +1,4 @@
-## Preparing the environment and Inventory
+# Preparing the environment and Inventory
 
 ## 1. Creating the AWS Services
 
@@ -48,7 +48,7 @@
 
 ![Cloudformation Stacks](../images/stacks.png)
 
-# 2. AWS Services created
+## 2. AWS Services created
 
 * Two amazon VPC environments with two public subnets, each one with:
   * EC2 instance Amazon Linux 2 (t2.micro) with IAM Role and Tags (Environment and Patch Group).
