@@ -17,7 +17,7 @@ Hello, this is a self-paced workshop designed to explore the main features insid
 
 1.2\. [We need to set up AWS Config to record configuration changes of our resources.](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html)
 
-1.3\. [We need to create a Keypair to log in to the ec2 instances.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
+1.3\. [We need to create a Keypair to log in to the EC2 instances.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
 
 1.4\. Go to the AWS Marketplace for CentOS 7 https://aws.amazon.com/marketplace/pp/B00O7WM7QW?qid=1554065489734, choose **Continue to Subscribe** and choose **Accept Terms**.
 
@@ -151,9 +151,9 @@ b\. In the next page you will see a timeline changes for the instance, the last 
 
 ### Documents
 
-6.1\. Go to Systems Manager console on **Documents** page https://console.aws.amazon.com/systems-manager/documents and click on **Create document** button.
+6.1\. Go to Systems Manager console on the **Documents** page https://console.aws.amazon.com/systems-manager/documents and click on **Create document** button.
 
-6.2\. Use the name `ActivateWebServer` for the new document.
+6.2\. In Document Details for the **Name** type `ActivateWebServer`.
 
 6.3\. On Document type select **Command document** and content **JSON** type.
 
@@ -209,19 +209,23 @@ b\. In the next page you will see a timeline changes for the instance, the last 
 
 ### Run Command
 
-6.6\. Go to Systems Manager service and click on **Run Command** under Actions section and click on **Run Command** button.
+6.6\. Go to Systems Manager console on the **Run Command** page https://console.aws.amazon.com/systems-manager/run-command and click on **Run Command** button.
 
 6.7\. On the Run a command page, click in the search bar and select, **Owner**, then click on **Owned by me**.
 
 6.8\. Now select the **ActivateWebServer** document name that we created previously.
 
-6.9\. For the command paramters we are going to use the default values, where Password is referenced for the Paramater Store created.
+![Select Document](images/run-command-select-document.png)
 
-6.10\. On Targets, select **Specifying a tag** and apply a filter using the tag key `Environment` and the value `Development`, click on **Add**.
+6.9\. On **Targets**, select **Specifying a tag** and add a filter using the tag key `Environment` and the value `Development`, click on **Add**.
 
-6.11\. Scroll down and click **Run**.
+![Targets](images/run-command-targets.png)
 
-6.12\. Next you will see page documenting your running command then and overall success in green.
+6.10\. Scroll down and click **Run**.
+
+6.11\. Next you will see page documenting your running command then and overall success in green.
+
+![Run Command Result](images/run-command-result.png)
 
 **Once each instance task is finished you can check the web server by accessing by the public IP in your browser.**
 
