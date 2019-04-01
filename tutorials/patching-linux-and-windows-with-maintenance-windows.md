@@ -2,7 +2,7 @@
 
 We are going to create a special PatchBaseline that will only apply to Amazon Linux 2 instances based on the tag **Patch Group**, for rest of the instances will be applied the default Patch Baselines provided by AWS.
 
-## 1. Patch Baseline
+## 1. Create a Patch Baseline for Amazon Linux 2 using the tag "Patch Group"
 
 1.1\. Go to Systems Manager console on the **Patch Manager** page https://console.aws.amazon.com/systems-manager/patch-manager and click on **default patch baselines** link.
 
@@ -30,7 +30,7 @@ We are going to create a special PatchBaseline that will only apply to Amazon Li
 
 **Note:** Remember that this new patch baseline will only apply to instances tagged with the key **Patch Group** and the value of **AmazonLinux2**, the instances **production-resources-AmazonLinux2** and **development-resources-AmazonLinux2** already have the tags required.
 
-## 2. Maintenance Windows
+## 2. Create a Maintenance Windows for Development Instances
 
 2.1\. Go to Systems Manager console on **Maintenance Windows** page https://console.aws.amazon.com/systems-manager/maintenance-windows and click on **Create Maintenance Window**.
 
