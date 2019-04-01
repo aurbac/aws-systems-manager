@@ -1,8 +1,8 @@
 # Patching Linux and Windows with Maintenance Windows
 
-We are going to create a special PatchBaseline that will only apply to Amazon Linux 2 instances based on the tag **Patch Group**, for rest of the instances will be applied the default Patch Baselines provided by AWS.
-
 ## 1. Create a Patch Baseline for Amazon Linux 2 using the tag "Patch Group"
+
+We are going to create a special PatchBaseline that will only apply to Amazon Linux 2 instances based on the tag **Patch Group**, for rest of the instances will be applied the default Patch Baselines provided by AWS.
 
 1.1\. Go to Systems Manager console on the **Patch Manager** page https://console.aws.amazon.com/systems-manager/patch-manager and click on **default patch baselines** link.
 
