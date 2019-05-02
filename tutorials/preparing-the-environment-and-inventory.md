@@ -30,7 +30,7 @@
 
   g\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
-1.6\. Launch the [CloudFormation template AURBAC-AWS-SSM-Requirements.yaml](../AURBAC-AWS-SSM-Requirements.yaml) to create the S3 bucket and the role for the maintenance window task.
+1.6\. Download the [CloudFormation template AURBAC-AWS-SSM-Requirements.yaml](../AURBAC-AWS-SSM-Requirements.yaml) and launch to create the Amazon S3 buckets, CloudWatch Log Group and the IAM Role for the maintenance window task.
 
   a\. Open the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation
   
@@ -46,6 +46,8 @@
 
   g\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
+1.7\. Now you have two CloudFormation stacks with the services required as follows, for the **ssm-requirements** stack you will see some values in **Outputs** required further.
+
 ![Cloudformation Stacks](../images/stacks.png)
 
 ## 2. AWS Services created
@@ -59,7 +61,7 @@
 * An Amazon S3 bucket for the maintenance window task.
 * An IAM Role for the maintenance window task.
 * An Amazon S3 bucket for session manager.
-* An 
+* A CloudWatch Log Group for session manager.
 
 ![AWS Services](../images/aws-services.png)
 
