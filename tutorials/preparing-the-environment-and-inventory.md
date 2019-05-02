@@ -2,11 +2,11 @@
 
 ## 1. Creating the AWS Services
 
-1.1\. Log into the AWS Management Console and choose the preferred [AWS region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
+1.1\. Log into the AWS Management Console and choose the [N. Virginia, Ohio, Oregon or California Region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html), for the rest of the modules remember to use the same region.
 
-1.2\. [We need to set up AWS Config to record configuration changes of our resources.](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html)
+1.2\. [Set up AWS Config to record configuration changes of our resources.](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html)
 
-1.3\. [We need to create a Keypair to log in to the EC2 instances.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
+1.3\. [Create a Keypair to log in to the EC2 instances.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
 
 1.4\. Go to the AWS Marketplace for CentOS 7 https://aws.amazon.com/marketplace/pp/B00O7WM7QW?qid=1554065489734, choose **Continue to Subscribe** and choose **Accept Terms**.
 
@@ -14,9 +14,9 @@
 
 ![Centos Accept Terms](../images/centos-2.png)
 
-1.5\. Download the [CloudFormation template](AURBAC-AWS-Instances-For-SSM.yaml), we are going to launch it two times in your selected region, the first one for the **production** environment and the second one for the **development** environment.
+1.5\. Download the [CloudFormation template AURBAC-AWS-Instances-For-SSM.yaml](../AURBAC-AWS-Instances-For-SSM.yaml), we are going to launch it two times in your selected region, the first one for the **production environment (stack: production-resources)** and the second one for the **development environment (stack: development-resources)**.
 
-  a\. Open the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation
+  a\. Open the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation.
   
   b\. If this is a new AWS CloudFormation account, click **Create New Stack**. Otherwise, click **Create Stack**.
 
@@ -30,7 +30,7 @@
 
   g\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
-1.6\. Launch the [CloudFormation template](AURBAC-AWS-SSM-Requirements.yaml) to create the S3 bucket and the role for the maintenance window task.
+1.6\. Launch the [CloudFormation template AURBAC-AWS-SSM-Requirements.yaml](../AURBAC-AWS-SSM-Requirements.yaml) to create the S3 bucket and the role for the maintenance window task.
 
   a\. Open the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation
   
@@ -56,9 +56,10 @@
   * EC2 instance Windows 2012 (t2.medium) with IAM Role and Tag (Environment).
   * EC2 instance Windows 2016 (t2.medium) with IAM Role and Tag (Environment).
   * Each instance has an IAM Role with the policy required for AWS Systems Manager: **AmazonEC2RoleforSSM**
-* An S3 bucket for the maintenance window task.
+* An Amazon S3 bucket for the maintenance window task.
 * An IAM Role for the maintenance window task.
-* An S3 bucket for session manager.
+* An Amazon S3 bucket for session manager.
+* An 
 
 ![AWS Services](../images/aws-services.png)
 

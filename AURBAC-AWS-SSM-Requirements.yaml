@@ -16,6 +16,11 @@ Outputs:
     Export:
       Name: !Sub '${AWS::StackName}-bucket-sessions-output'
     Value: !Ref 'BucketSessions'
+  SessionsLogGroupOutput:
+    Description: Name of CloudWatch Log Group for sessions output
+    Export:
+      Name: !Sub '${AWS::StackName}-sessions-log-group-output'
+    Value: !Ref 'SessionsLogGroup'
 Resources:
   BucketMaintenanceWindowTask:
     Type: AWS::S3::Bucket
@@ -35,4 +40,8 @@ Resources:
         - arn:aws:iam::aws:policy/service-role/AmazonSSMMaintenanceWindowRole
       Path: /
     Type: AWS::IAM::Role
+  SessionsLogGroup:
+    Properties:
+      RetentionInDays: 7
+    Type: AWS::Logs::LogGroup
 
