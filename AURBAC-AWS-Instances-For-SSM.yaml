@@ -9,15 +9,6 @@ Mappings:
       AMI: ami-01beb64058d271bc4
     us-west-2:
       AMI: ami-061e7ebbc234015fe
-  Centos7Map:
-    us-east-1:
-      AMI: ami-9887c6e7
-    us-east-2:
-      AMI: ami-9c0638f9
-    us-west-1:
-      AMI: ami-4826c22b
-    us-west-2:
-      AMI: ami-3ecc8f46
   Windows2012Map:
     us-east-1:
       AMI: ami-031f3664c97bc6f9d
@@ -112,42 +103,6 @@ Resources:
       InternetGatewayId: !Ref 'InternetGateway'
       VpcId: !Ref 'Vpc'
     Type: AWS::EC2::VPCGatewayAttachment
-  Centos7Instance:
-    Properties:
-      BlockDeviceMappings:
-        - DeviceName: /dev/xvda
-          Ebs:
-            DeleteOnTermination: 'true'
-            VolumeSize: 8
-            VolumeType: gp2
-      IamInstanceProfile: !Ref 'LinuxInstanceProfile'
-      ImageId: !FindInMap
-        - Centos7Map
-        - !Ref 'AWS::Region'
-        - AMI
-      InstanceType: t2.micro
-      KeyName: !Ref 'KeyName'
-      NetworkInterfaces:
-        - AssociatePublicIpAddress: 'true'
-          DeviceIndex: 0
-          GroupSet:
-            - !Ref 'LinuxSecurityGroup'
-          SubnetId: !Ref 'PublicSubnet1'
-      Tags:
-        - Key: Name
-          Value: !Join
-            - ''
-            - - !Ref 'AWS::StackName'
-              - -Centos7
-      UserData: !Base64
-        Fn::Join:
-          - ''
-          - - "#!/bin/bash -xe\n"
-            - "sudo yum update -y\n"
-            - "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm\n"
-            - "sudo systemctl enable amazon-ssm-agent\n"
-            - "sudo systemctl start amazon-ssm-agent\n"
-    Type: AWS::EC2::Instance
   IGRoute:
     DependsOn: AttachGateway
     Properties:
