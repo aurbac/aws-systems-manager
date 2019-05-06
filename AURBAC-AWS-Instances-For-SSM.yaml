@@ -11,13 +11,13 @@ Mappings:
       AMI: ami-061e7ebbc234015fe
   Windows2012Map:
     us-east-1:
-      AMI: ami-031f3664c97bc6f9d
+      AMI: ami-0e3fbebfa69d4c85c
     us-east-2:
-      AMI: ami-0b5a579ce0cdfab3a
+      AMI: ami-08c44c744ddf87622
     us-west-1:
-      AMI: ami-0085695011d57c9cd
+      AMI: ami-0018c07a5ca79359d
     us-west-2:
-      AMI: ami-03aacb843b680d6f8
+      AMI: ami-0395238cb927001d5
   Windows2016Map:
     us-east-1:
       AMI: ami-0bf148826ef491d16

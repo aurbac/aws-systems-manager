@@ -8,13 +8,7 @@
 
 1.3\. [Create a Keypair to log in to the EC2 instances.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
 
-1.4\. Go to the AWS Marketplace for CentOS 7 https://aws.amazon.com/marketplace/pp/B00O7WM7QW?qid=1554065489734, choose **Continue to Subscribe** and choose **Accept Terms**.
-
-![Centos Continue to Subscribe](../images/centos-1.png)
-
-![Centos Accept Terms](../images/centos-2.png)
-
-1.5\. Download the [CloudFormation template AURBAC-AWS-Instances-For-SSM.yaml](../AURBAC-AWS-Instances-For-SSM.yaml), we are going to launch it two times in your selected region, the first one for the **production environment (stack: production-resources)** and the second one for the **development environment (stack: development-resources)**.
+1.4\. Download the [CloudFormation template AURBAC-AWS-Instances-For-SSM.yaml](../AURBAC-AWS-Instances-For-SSM.yaml), we are going to launch it two times in your selected region, the first one for the **production environment (stack: production-resources)** and the second one for the **development environment (stack: development-resources)**.
 
   a\. Open the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation.
   
@@ -30,7 +24,7 @@
 
   g\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
-1.6\. Download the [CloudFormation template AURBAC-AWS-SSM-Requirements.yaml](../AURBAC-AWS-SSM-Requirements.yaml) and launch to create the Amazon S3 buckets, CloudWatch Log Group and the IAM Role for the maintenance window task.
+1.5\. Download the [CloudFormation template AURBAC-AWS-SSM-Requirements.yaml](../AURBAC-AWS-SSM-Requirements.yaml) and launch to create the Amazon S3 buckets, CloudWatch Log Group and the IAM Role for the maintenance window task.
 
   a\. Open the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation
   
@@ -46,7 +40,7 @@
 
   g\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
-1.7\. Now you have two CloudFormation stacks with the services required as follows, for the **ssm-requirements** stack you will see some values in **Outputs** required further.
+1.6\. Now you have 3 CloudFormation Stacks with the services required as follows, for the **ssm-requirements** stack you will see some values in **Outputs** required further.
 
 ![Cloudformation Stacks](../images/stacks.png)
 
