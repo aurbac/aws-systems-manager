@@ -8,7 +8,7 @@
 
 1.3\. [Create a Keypair to log in to the EC2 instances.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
 
-1.4\. Download the [CloudFormation template AURBAC-AWS-Instances-For-SSM.yaml](templates/AURBAC-AWS-Instances-For-SSM.yaml), we are going to launch it two times in your selected region, the first one for the **production environment (stack: production-resources)** and the second one for the **development environment (stack: development-resources)**.
+1.4\. Download the [CloudFormation template AURBAC-AWS-Instances-For-SSM.yaml](scripts/AURBAC-AWS-Instances-For-SSM.yaml), we are going to launch it two times in your selected region, the first one for the **production environment (stack: production-resources)** and the second one for the **development environment (stack: development-resources)**.
 
   a\. Open the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation.
   
@@ -24,7 +24,7 @@
 
   g\. Check the box `I acknowledge that AWS CloudFormation might create IAM resources.` and click **Create**.
 
-1.5\. Download the [CloudFormation template AURBAC-AWS-SSM-Requirements.yaml](templates/AURBAC-AWS-SSM-Requirements.yaml) and launch to create the Amazon S3 buckets, CloudWatch Log Group and the IAM Role for the maintenance window task.
+1.5\. Download the [CloudFormation template AURBAC-AWS-SSM-Requirements.yaml](scripts/AURBAC-AWS-SSM-Requirements.yaml) and launch to create the Amazon S3 buckets, CloudWatch Log Group and the IAM Role for the maintenance window task.
 
   a\. Open the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation
   
