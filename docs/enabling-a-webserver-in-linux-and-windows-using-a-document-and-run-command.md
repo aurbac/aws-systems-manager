@@ -10,6 +10,7 @@
 
 1.4\. Copy and replace in the field text for **Content** with the follwing following structure:
 
+``` json
     {
     "schemaVersion": "2.2",
     "description": "Enabling a WebServer.",
@@ -55,6 +56,7 @@
         }
     ]
     }
+```
 
 1.5\. Scroll down and click **Create document**.
 
@@ -66,16 +68,16 @@
 
 2.3\. Now select the **ActivateWebServer** document name that we created previously.
 
-![Select Document](../images/run-command-select-document.png)
+![Select Document](images/run-command-select-document.png)
 
 2.4\. On **Targets**, select **Specifying a tag** and add a filter using the tag key `Environment` and the value `Development`, click on **Add**.
 
-![Targets](../images/run-command-targets.png)
+![Targets](images/run-command-targets.png)
 
 2.5\. Scroll down and click **Run**.
 
 2.6\. Next you will see page documenting your running command then and overall success in green.
 
-![Run Command Result](../images/run-command-result.png)
+![Run Command Result](images/run-command-result.png)
 
 **Note:** Once each instance task is finished you can check the web server by accessing by the public IP in your browser.

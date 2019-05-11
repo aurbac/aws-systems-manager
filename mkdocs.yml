@@ -1,0 +1,47 @@
+# Project information
+
+site_name: Working with AWS Systems Manager
+site_description: 'This is a self-paced workshop designed to explore the main features inside AWS Systems Manager.'
+#site_author: 'beralfon@amazon.com'
+site_url: 'http://aws-systems-manager.ws.kabits.com'
+
+# Repository
+#repo_name: 'aws-samples/aws-security-workshops'
+repo_url: 'https://github.com/aurbac/aws-systems-manager'
+
+google_analytics: ['UA-55517703-5', 'aws-systems-manager.ws.kabits.com']
+
+# Copyright
+copyright: '&copy; 2019 - AURBAC '
+
+extra:
+  social:
+    - type: 'home'
+      link: 'http://aws-systems-manager.ws.kabits.com'
+    - type: 'twitter'
+      link: 'https://twitter.com/aurbac'
+
+nav:
+    - Home: index.md
+    - Modules: 
+      - Preparing the environment and Inventory: preparing-the-environment-and-inventory.md
+      - Resource Groups for Production and Development services: resource-groups-for-production-and-development-services.md
+      - Inventory for Production and Development instances: inventory-for-production-and-development-instances.md
+      - Update the SSM Agent with State Manager: update-the-ssm-agent-with-state-manager.md
+      - Enabling a WebServer in Linux and Windows using a Document and Run Command: enabling-a-webserver-in-linux-and-windows-using-a-document-and-run-command.md
+      - Patching Linux and Windows with Maintenance Windows: patching-linux-and-windows-with-maintenance-windows.md
+theme:
+  name: 'material'
+  palette:
+    primary: 'pink'
+    accent: 'pink'
+  logo:
+    icon: 'cloud_done'
+markdown_extensions:
+  - codehilite:
+      linenums: true
+  - pymdownx.mark
+  - admonition
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.magiclink
